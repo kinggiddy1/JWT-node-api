@@ -7,7 +7,7 @@ require('dotenv').config();
 // Validation function
 function validateUser(user) {
   const schema = Joi.object({
-    username: Joi.string().min(3).required(),  // Fix username validation
+    username: Joi.string().min(3).max(10).required(),  // Fix username validation
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
   });
