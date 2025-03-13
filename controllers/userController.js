@@ -7,7 +7,7 @@ require('dotenv').config();
 // Validation function
 function validateUser(user) {
   const schema = Joi.object({
-    username: Joi.string().min(3).max(10).required(),  // Fix username validation
+    username: Joi.string().min(3).max(10).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
   });
@@ -32,7 +32,7 @@ exports.register = async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert user into the database (Fixed Query)
+    // Insert user into the database 
     const [result] = await pool.query(
       'INSERT INTO Users (username, email, password_hash) VALUES (?, ?, ?)',
       [username, email, hashedPassword]
