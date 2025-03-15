@@ -13,7 +13,7 @@ function validateUser(user) {
   });
   return schema.validate(user);
 }
-
+ 
 // Register a user
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
