@@ -26,7 +26,7 @@ exports.register = async (req, res) => {
     // Check if user already exists
     const [rows] = await pool.query('SELECT * FROM Users WHERE email = ?', [email]);
     if (rows.length > 0) {
-      return res.status(400).json({ msg: 'User already exists' });
+      return res.status(400).json({ message: 'User already exists' });
     }
 
     // Hash password
