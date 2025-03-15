@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
     // Check if user exists
     const [rows] = await pool.query('SELECT * FROM Users WHERE email = ?', [email]);
     if (rows.length === 0) {
-      return res.status(400).json({ message: 'Invalid email' });
+      return res.status(400).json({ error: 'Invalid email' });
     }
 
     const user = rows[0];
