@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
   
   // Check if Authorization header exists and has correct format
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Authorization denied. Use Bearer token.' });
+    return res.status(401).json({ error: 'Authorization denied. No token found.' });
   }
   
   // Extract the token
