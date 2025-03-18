@@ -4,6 +4,12 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
+// CORS
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+  }));
+
 const PORT = process.env.PORT || 3000;
 
 // Basic route
