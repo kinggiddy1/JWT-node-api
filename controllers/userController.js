@@ -7,7 +7,7 @@ require('dotenv').config();
 // Validation function
 function validateUser(user) {
   const schema = Joi.object({
-    username: Joi.string().min(3).max(10).required(),
+    username: Joi.string().min(3).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
   });
@@ -126,6 +126,23 @@ exports.getAllUsers = async (req, res) => {
   res.json(rows);
   } 
   catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// Get user data
+exports.deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const [result] = await pool.query('DELETE FROM Users WHERE id = ?', [userId]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({ message: 'User successfully deleted' });
+  } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
   }
