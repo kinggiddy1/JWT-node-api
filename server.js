@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 const usersRoutes = require('./routes/users');
 
 // Use the users routes
-app.use('/api/auth', usersRoutes);
-//app.use('/api/', usersRoutes);
+//app.use('/api/auth', usersRoutes);
+app.use('/api/', usersRoutes);
   
 
 app.listen(PORT, () => {

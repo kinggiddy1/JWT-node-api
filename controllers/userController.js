@@ -91,3 +91,42 @@ exports.login = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+
+// Get user data
+exports.getUser = async (req, res) => {
+  try {
+    // Use the ID from the URL parameter
+    const userId = req.params.id;
+    
+    const [rows] = await pool.query('SELECT id, username, email, created_at FROM Users WHERE id = ?',
+      [userId]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+  res.json(rows[0]);
+  } 
+  catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// Get user data
+exports.getAllUsers = async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT id, username, email, created_at FROM Users');
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+  res.json(rows);
+  } 
+  catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
