@@ -17,4 +17,4 @@ const authGuard = require('../middleware/authGuard');
   router.post('/deleteUser/:id', deleteUser);
     
 
-module.exports = router;    
+module.exports = router;   
