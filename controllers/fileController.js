@@ -21,4 +21,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-module.exports = { upload, uploadDir };
+// Controller function for file upload
+const uploadFile = (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+    res.json({ message: 'File uploaded successfully', file: req.file });
+};
+
+module.exports = { upload, uploadFile, uploadDir }; 
