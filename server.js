@@ -5,8 +5,6 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 
-
-
 const PORT = process.env.PORT || 3000;
 
 // CORS
@@ -15,6 +13,10 @@ app.use(cors({
     credentials: true
   }));
   
+
+
+
+
 // Basic route
 app.get('/', (req, res) => {
     res.json({ message: 'This API is working smoothly' });
@@ -22,10 +24,13 @@ app.get('/', (req, res) => {
 
 // Import user routes
 const usersRoutes = require('./routes/users');
+const uploadRoutes = require('./routes/uploadRoute');
 
-// Use the users routes
+// USE THE ROUTES
+
 //app.use('/api/auth', usersRoutes);
 app.use('/api/', usersRoutes);
+app.use('/api/', uploadRoutes);
   
 
 app.listen(PORT, () => {
