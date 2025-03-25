@@ -14,9 +14,6 @@ app.use(cors({
   }));
   
 
-
-
-
 // Basic route
 app.get('/', (req, res) => {
     res.json({ message: 'This API is working smoothly' });
@@ -27,7 +24,6 @@ const usersRoutes = require('./routes/users');
 const uploadRoutes = require('./routes/uploadRoute');
 
 // USE THE ROUTES
-
 //app.use('/api/auth', usersRoutes);
 app.use('/api/', usersRoutes);
 app.use('/api/', uploadRoutes);
