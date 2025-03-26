@@ -29,4 +29,4 @@ const uploadFile = (req, res) => {
     res.json({ message: 'File uploaded successfully', file: req.file });
 };
 
-module.exports = { upload, uploadFile, uploadDir }; 
+module.exports = { upload, uploadFile, uploadDir };  
