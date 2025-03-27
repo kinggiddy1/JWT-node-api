@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage }); 
 
 // Controller function for file upload
 const uploadFile = (req, res) => {
